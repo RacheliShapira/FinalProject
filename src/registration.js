@@ -17,8 +17,8 @@ export default class Registration extends React.Component {
                 first: this.first,
                 last: this.last,
                 email: this.email,
-                password: this.password
-                // imageurl: this.state.imageurl
+                password: this.password,
+                imageurl: this.state.imageurl
             })
             .then(({ data }) => {
                 if (data.success) {

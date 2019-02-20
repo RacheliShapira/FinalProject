@@ -5,6 +5,9 @@ import Uploader from "./uploader";
 import Profile from "./profile";
 import Nav from "./nav";
 import OtherUser from "./otherUser";
+import AddQuest from "./addQuest";
+import Quest from "./quest";
+
 import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 
@@ -127,6 +130,14 @@ export default class App extends React.Component {
                                     updateProfileBio={this.updateProfileBio}
                                 />
                             )}
+                        />
+                        <Route
+                            path="/addQuest"
+                            render={() => <AddQuest first={this.state.first} />}
+                        />
+                        <Route
+                            path="/quest"
+                            render={() => <Quest first={this.state.first} />}
                         />
                         <Route
                             path="/user/:id"

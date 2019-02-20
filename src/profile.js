@@ -16,11 +16,12 @@ export default function Profile(props) {
                     {props.first} {props.last}
                 </h1>
                 <h3>{props.bio}</h3>
+                <p> A few words about {props.first} : </p>
             </div>
 
             <div id="bioEditorContainer">
                 <button className="bioButtons" onClick={props.showBioEditor}>
-                    Add to Bio
+                    Write something
                 </button>
                 {props.bioEditorVisible && (
                     <BioEditor
@@ -30,6 +31,7 @@ export default function Profile(props) {
                     />
                 )}
             </div>
+            <h3> Your Quest boards:</h3>
         </div>
     );
 }

@@ -51,7 +51,7 @@ export default class Uploader extends React.Component {
     render() {
         return (
             <div onClick={this.closeModal} id="uploader">
-                <h3 id="h3ChangeProPic">Change your profile picture</h3>
+                <h3 id="h3ChangeProPic">Choose a new Profile picture</h3>
                 <label id="uploadForm">
                     <input
                         name="file-upload"
@@ -62,9 +62,11 @@ export default class Uploader extends React.Component {
                 </label>
                 <br />
                 <br />
-                {this.state.filename && (
-                    <div id="filename">{this.state.filename}</div>
-                )}
+
+                <div id="previewpic">
+                    <img stc={this.state.filename} />
+                </div>
+
                 <button className="uploadButtons" onClick={this.uploadFile}>
                     Upload
                 </button>

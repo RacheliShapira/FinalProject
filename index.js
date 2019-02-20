@@ -236,6 +236,28 @@ app.post("/removeFriendship/:id", (req, res) => {
 });
 
 ////////////////// friendship
+
+app.post("/addQuest", (req, res) => {
+    // console.log("req.bdy", req.body);
+
+    db.addQuest(
+        req.body.board_name,
+        req.body.board_img,
+        req.body.description,
+        req.body.type
+    )
+        .then(({ rows }) => {
+            // res.session.userId = rows[0].id;
+            res.json({ success: true });
+        })
+        .catch(function(err) {
+            console.log("addQuest- Error is:", err);
+            res.json({ error: true });
+        });
+});
+
+///////
+
 app.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/welcome");

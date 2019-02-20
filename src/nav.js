@@ -7,12 +7,12 @@ export default function Nav() {
                 Profile
             </a>
             <br />
-            <a className="navButtons" href="/friends">
-                Friends
+            <a className="navButtons" href="/search">
+                Search Friends
             </a>
             <br />
-            <a className="navButtons" href="/onlineusers">
-                Who is online
+            <a className="navButtons" href="/addQuest">
+                Create a New Quest Board
             </a>
             <br />
             <a className="navButtons" href="/chatmessages">

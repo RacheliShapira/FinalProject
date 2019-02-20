@@ -96,3 +96,27 @@ module.exports.removeFriendship = (loggedInId, otherUserId) => {
 };
 
 /////friendship
+
+module.exports.addQuest = function(board_name, board_img, description, type) {
+    return db.query(
+        `INSERT INTO boards (board_name, board_img, description, type)
+        VALUES ($1, $2, $3, $4)
+        RETURNING *`,
+        [board_name, board_img, description, type]
+    );
+};
+
+module.exports.addImageInBoard = function(
+    board_id,
+    uploader_id,
+    imageurl,
+    description,
+    location
+) {
+    return db.query(
+        `INSERT INTO users (board_id, uploader_id, imageurl, description,location)
+        VALUES ($1, $2, $3, $4, %5)
+        RETURNING *`,
+        [board_id, uploader_id, imageurl, description, location]
+    );
+};

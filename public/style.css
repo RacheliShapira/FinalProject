@@ -40,8 +40,9 @@
 #appProfile {
     position: absolute;
     left: 20%;
-    max-width: 100vw;
-    height: auto;
+    width: 65vw;
+    min-height: 35vw;
+    padding: 4px;
 
     border: 1px solid black;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 1);
@@ -259,4 +260,20 @@ input {
     border: 3px dotted MediumSeaGreen;
     align-items: center;
     text-align: center;
+}
+
+#addQuest {
+    text-align: center;
+}
+#boardForm {
+    text-align: left;
+    position: relative;
+    left: 33%;
+}
+#boardPic {
+    /* position: absolute;
+    left: 30%; */
+    border: 2px dotted black;
+    height: 100px;
+    width: 100px;
 }
