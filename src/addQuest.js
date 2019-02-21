@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "./axios";
-import Quest from "./quest";
 
 export default class addQuest extends React.Component {
     constructor(props) {
@@ -8,6 +7,7 @@ export default class addQuest extends React.Component {
         this.state = {
             board_img: "/defaultBoard.jpg",
             fromSubmitted: false
+            // board_id: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.submit = this.submit.bind(this);
@@ -17,7 +17,7 @@ export default class addQuest extends React.Component {
     }
 
     submit() {
-        console.log("board_name", this.board_name);
+        // console.log("board_name", this.board_name);
 
         axios
             .post("/addQuest", {
@@ -26,17 +26,16 @@ export default class addQuest extends React.Component {
                 description: this.description,
                 type: this.type
             })
-            .then(({ data }) => {
-                if (data.success) {
-                    // location.replace("/quest");
-                    this.setState({
-                        submittedForm: true
-                    });
-                } else {
-                    this.setState({
-                        error: true
-                    });
-                }
+            .then(response => {
+                this.setState({
+                    board_id: response.data.board_id,
+                    submittedForm: true
+                });
+                // console.log("this.state.board_id", this.state.board_id);
+                this.props.history.push(`/quest/${this.state.board_id}`);
+            })
+            .catch(error => {
+                console.log("error in uploader: ", error);
             });
     }
 
@@ -87,10 +86,6 @@ export default class addQuest extends React.Component {
                     <br />
                     <button onClick={this.submit}>New Quest</button>
                 </div>
-
-                {this.state.submittedForm && location.replace("/quest") && (
-                    <Quest board_name={this.board_name} />
-                )}
             </div>
         );
     }

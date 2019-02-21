@@ -5,10 +5,12 @@ export default class BioEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bioDraft: ""
+            bioDraft: this.props.bio
         };
 
         this.editBio = this.editBio.bind(this);
+        this.cancelEdit = this.cancelEdit.bind(this);
+
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -19,8 +21,6 @@ export default class BioEditor extends React.Component {
     editBio() {
         var self = this;
         this.props.hideBioEditor();
-
-        console.log("going to post");
 
         axios
             .post("updatebioo", { bioDraft: self.state.bioDraft })
@@ -33,16 +33,23 @@ export default class BioEditor extends React.Component {
             });
     }
 
+    cancelEdit() {
+        this.props.hideBioEditor();
+    }
+
     render() {
         return (
             <div>
                 <textarea
                     id="bioEditor"
-                    placeholder={this.bio}
+                    value={this.state.bioDraft}
                     onChange={this.handleChange}
                 />
                 <button id="submitBio" onClick={this.editBio}>
                     Submit
+                </button>
+                <button id="cancelBio" onClick={this.cancelEdit}>
+                    Cancel edit
                 </button>
             </div>
         );

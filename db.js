@@ -99,14 +99,23 @@ module.exports.removeFriendship = (loggedInId, otherUserId) => {
 
 module.exports.addQuest = function(board_name, board_img, description, type) {
     return db.query(
-        `INSERT INTO boards (board_name, board_img, description, type)
+        `INSERT INTO quests (board_name, board_img, description, type)
         VALUES ($1, $2, $3, $4)
         RETURNING *`,
         [board_name, board_img, description, type]
     );
 };
 
-module.exports.addImageInBoard = function(
+module.exports.getQuestInfo = function(board_id) {
+    return db.query(
+        `SELECT *
+        FROM quests
+        WHERE id = $1`,
+        [board_id]
+    );
+};
+
+module.exports.addImageInQuest = function(
     board_id,
     uploader_id,
     imageurl,
@@ -114,9 +123,18 @@ module.exports.addImageInBoard = function(
     location
 ) {
     return db.query(
-        `INSERT INTO users (board_id, uploader_id, imageurl, description,location)
-        VALUES ($1, $2, $3, $4, %5)
+        `INSERT INTO images (board_id, uploader_id, imageurl, description,location)
+        VALUES ($1, $2, $3, $4, $5)
         RETURNING *`,
         [board_id, uploader_id, imageurl, description, location]
+    );
+};
+
+module.exports.getQuestImages = function(board_id) {
+    return db.query(
+        `SELECT *
+        FROM images
+        WHERE board_id = $1`,
+        [board_id]
     );
 };

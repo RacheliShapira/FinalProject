@@ -15,6 +15,7 @@
 #app {
 }
 #appHeader {
+    background: LightSteelBlue;
 }
 #appNav {
     position: absolute;
@@ -25,7 +26,7 @@
 }
 
 .navButtons {
-    background-color: MediumSeaGreen;
+    background-color: LightSteelBlue;
     border: 1px dotted black;
     color: black;
     padding: 5px 10px;
@@ -34,7 +35,7 @@
     display: block;
     margin-top: 30px;
     margin-left: 5px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 8px 16px 0px rgba(70, 130, 180, 0.6);
 }
 
 #appProfile {
@@ -45,7 +46,7 @@
     padding: 4px;
 
     border: 1px solid black;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 1);
+    box-shadow: 0px 8px 16px 0px rgba(70, 130, 180, 1);
 }
 #welcome {
     position: absolute;
@@ -54,16 +55,16 @@
 
 #welcomeP {
     font-size: 30px;
-    color: MediumSeaGreen;
+    color: SteelBlue;
     font-weight: bold;
 }
 h1 {
-    /* color: MediumSeaGreen; */
-    color: OliveDrab;
+    /* color: LightSteelBlue; */
+    color: MidnightBlue;
 }
 
 h2 {
-    color: OliveDrab;
+    color: SteelBlue;
 }
 
 input {
@@ -97,7 +98,7 @@ input {
     padding: 5px 10px;
     width: 80px;
     height: 20px;
-    background: MediumSeaGreen;
+    background: LightSteelBlue;
     color: black;
     border: 1px dotted black;
     text-align: center;
@@ -114,11 +115,12 @@ input {
     height: 70px;
     width: 70px;
     z-index: 9;
+    padding-top: 3px;
 }
 
 #uploader {
     z-index: 9;
-    background: MediumSeaGreen;
+    background: SteelBlue;
     border: 1px dotted black;
     border-radius: 13px;
     padding: 4px;
@@ -128,12 +130,12 @@ input {
     left: 33%;
     text-align: center;
 }
-#h3ChangeProPic {
-    background: MediumSeaGreen;
+.changePic {
+    background: SteelBlue;
 }
 
 .uploadButtons {
-    background-color: lightgreen;
+    background-color: LightSteelBlue;
     border: 1px solid black;
     color: black;
     margin-left: 25px;
@@ -158,35 +160,55 @@ input {
     float: left;
     position: relative;
 
-    top: 30%;
-    left: 10%;
+    top: 5%;
+    left: 6%;
     transform: scale(2);
 }
 
-#profileInfo {
+#profileName {
     position: relative;
-    left: 33%;
-    max-width: 700px;
+    left: 13%;
 }
 
 #bioEditorContainer {
     position: relative;
+    top: 20%;
+    max-width: 150px;
+    border: 1px solid black;
+}
+#status {
+    max-width: 150px;
+}
+.bioButtons {
+    background-color: LightSteelBlue;
+    border: 1px dotted black;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 3px;
+    position: absolute;
+    /* left: 33%; */
+    /* top: 5px; */
+}
+
+#profileInfo {
+    position: relative;
+    top: 1%;
     left: 33%;
 }
 
 #bioEditor {
-    width: 500px;
+    width: 200px;
     height: 200px;
     background: white;
     border: 1px dotted black;
     position: absolute;
     top: 1px;
-    left: 40px;
+    left: 10px;
 }
 
-#friendButton,
-.bioButtons {
-    background-color: MediumSeaGreen;
+#friendButton {
+    background-color: LightSteelBlue;
     border: 1px dotted black;
     color: black;
     padding: 5px 10px;
@@ -198,12 +220,12 @@ input {
 }
 
 #submitBio {
-    background-color: MediumSeaGreen;
+    background-color: LightSteelBlue;
     border: 1px dotted black;
     color: black;
     padding: 5px 10px;
     text-align: center;
-    border-radius: 13px;
+    border-radius: 3px;
     position: absolute;
     left: 40px;
     top: 230px;
@@ -257,7 +279,7 @@ input {
     left: 800px;
     height: 100px;
     width: 400px;
-    border: 3px dotted MediumSeaGreen;
+    border: 3px dotted LightSteelBlue;
     align-items: center;
     text-align: center;
 }
@@ -276,4 +298,9 @@ input {
     border: 2px dotted black;
     height: 100px;
     width: 100px;
+}
+
+#questInfo {
+    display: inline;
+    justify-content: space-beteen;
 }

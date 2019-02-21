@@ -131,13 +131,11 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
+                        <Route path="/addQuest" component={AddQuest} />
+
                         <Route
-                            path="/addQuest"
-                            render={() => <AddQuest first={this.state.first} />}
-                        />
-                        <Route
-                            path="/quest"
-                            render={() => <Quest first={this.state.first} />}
+                            path="/quest/:id"
+                            render={props => <Quest match={props.match} />}
                         />
                         <Route
                             path="/user/:id"

@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS boards;
+DROP TABLE IF EXISTS quests;
 
-CREATE TABLE boards(
+CREATE TABLE quests(
     id SERIAL PRIMARY KEY,
     board_name VARCHAR(300) NOT NULL CHECK (board_name <> ''),
     board_img VARCHAR(300) NOT NULL,

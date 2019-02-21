@@ -11,17 +11,15 @@ export default function Profile(props) {
                     showUploader={props.showUploader}
                 />
             </div>
-            <div id="profileInfo">
+            <div id="profileName">
                 <h1>
                     {props.first} {props.last}
                 </h1>
-                <h3>{props.bio}</h3>
-                <p> A few words about {props.first} : </p>
             </div>
-
             <div id="bioEditorContainer">
+                <p id="status">{props.bio}</p>
                 <button className="bioButtons" onClick={props.showBioEditor}>
-                    Write something
+                    Status
                 </button>
                 {props.bioEditorVisible && (
                     <BioEditor
@@ -31,7 +29,10 @@ export default function Profile(props) {
                     />
                 )}
             </div>
-            <h3> Your Quest boards:</h3>
+            <div id="profileInfo">
+                <h3> Your Friends:</h3>
+                <h3> Your Quest boards:</h3>
+            </div>
         </div>
     );
 }

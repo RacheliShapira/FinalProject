@@ -2,36 +2,40 @@ import React from "react";
 import axios from "./axios";
 // import ProfilePic from "./profilePic";
 
-export default class Uploader extends React.Component {
+export default class UploadImageQuest extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { boardId: this.props.id };
         this.uploadFile = this.uploadFile.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.showFilename = this.showFilename.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     uploadFile(e) {
         e.preventDefault();
 
         var file = document.getElementById("file");
-        // console.log("file:", file);
         var uploadedFile = file.files[0];
-        // console.log("uploadedfile:", uploadedFile);
-
         var formData = new FormData();
+        formData.append("boardId", this.state.boardId);
+        formData.append("description", this.state.description);
+        formData.append("location", this.state.location);
         formData.append("uploadedFile", uploadedFile);
 
         axios
-            .post("/profilePic/upload", formData)
+            .post("/quest/upload", formData)
             .then(response => {
                 console.log("response: ", response);
-                this.props.changePictureUrl(response.data.imageurl);
+                this.props.addImage(response.data);
             })
             .catch(error => {
                 console.log("error in uploader: ", error);
             });
     }
 
+    handleChange(e) {
+        this[e.target.name] = e.target.value;
+    }
     closeModal(e) {
         if (e.target == document.getElementById("uploader")) {
             this.props.hideUploader();
@@ -51,17 +55,34 @@ export default class Uploader extends React.Component {
     render() {
         return (
             <div onClick={this.closeModal} id="uploader">
-                <h3 className="changePic">Choose a new Profile picture</h3>
-                <label className="uploadForm">
+                <div id="imageForm">
+                    <h3 className="changePic">
+                        Choose a picture for your Quest
+                    </h3>
+                    {this.state.error && (
+                        <div className="error">Ooops! something is wrong</div>
+                    )}
+
                     <input
-                        name="file-upload"
+                        name="imageurl"
                         id="file"
                         type="file"
                         onChange={this.showFilename}
                     />
-                </label>
-                <br />
-                <br />
+
+                    <p>Description </p>
+                    <input
+                        name="description"
+                        placeholder="description"
+                        onChange={this.handleChange}
+                    />
+                    <p>location</p>
+                    <input
+                        name="location"
+                        placeholder="location"
+                        onChange={this.handleChange}
+                    />
+                </div>
 
                 <div id="previewpic">
                     <img stc={this.state.filename} />

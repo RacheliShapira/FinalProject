@@ -70,9 +70,6 @@ app.post(
     s3.upload,
     (req, res) => {
         console.log("POST /upload");
-
-        // console.log("req body: ", req.body);
-        // console.log("req file: ", req.file);
         db.addImage(config.s3Url + req.file.filename, req.session.userId)
             .then(({ rows }) => {
                 res.json({
@@ -236,10 +233,12 @@ app.post("/removeFriendship/:id", (req, res) => {
 });
 
 ////////////////// friendship
+//////////////////////////
 
+///quests:
 app.post("/addQuest", (req, res) => {
     // console.log("req.bdy", req.body);
-
+    // console.log("addQuest");
     db.addQuest(
         req.body.board_name,
         req.body.board_img,
@@ -247,12 +246,63 @@ app.post("/addQuest", (req, res) => {
         req.body.type
     )
         .then(({ rows }) => {
-            // res.session.userId = rows[0].id;
-            res.json({ success: true });
+            // console.log("rows[0].id :", rows[0].id);
+            res.json({
+                board_id: rows[0].id
+            });
         })
         .catch(function(err) {
             console.log("addQuest- Error is:", err);
             res.json({ error: true });
+        });
+});
+
+///
+
+app.get("/getQuestInfo/:id", (req, res) => {
+    const id = req.params.id;
+    db.getQuestInfo(id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.log("error in getting getQuestInfo", error);
+        });
+});
+
+//////////
+
+app.post(
+    "/quest/upload",
+    uploader.single("uploadedFile"),
+    s3.upload,
+    (req, res) => {
+        console.log("quest /upload");
+        db.addImageInQuest(
+            req.body.boardId,
+            req.session.userId,
+            config.s3Url + req.file.filename,
+            req.body.description,
+            req.body.location
+        )
+            .then(data => {
+                // res.json(rows[0]);
+                res.json(data.rows[0].imageurl);
+            })
+            .catch(err => console.log("error in quest uploader", err));
+    }
+);
+
+///////////////
+
+app.get("/getQuestImages/:id", (req, res) => {
+    const id = req.params.id;
+    db.getQuestImages(id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.log("error in getting getQuestImages", error);
         });
 });
 
