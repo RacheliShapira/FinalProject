@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "./axios";
 import UploadImageQuest from "./uploadImageQuest";
-import LargeImg from "./largeImg";
+// import LargeImg from "./largeImg";
 
 import { Link } from "react-router-dom";
 

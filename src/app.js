@@ -9,6 +9,7 @@ import AddQuest from "./addQuest";
 import Quest from "./quest";
 import MyFriends from "./myFriends";
 import MyQuests from "./myQuests";
+import LargeImg from "./largeImg";
 
 import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
@@ -152,6 +153,7 @@ export default class App extends React.Component {
                         />
                         <Route path="/myFriends" component={MyFriends} />
                         <Route path="/myQuests" component={MyQuests} />
+                        <Route path="/largeImg/:id" component={LargeImg} />
                     </div>
                 </BrowserRouter>
             </div>

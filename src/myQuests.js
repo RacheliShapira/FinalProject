@@ -11,6 +11,7 @@ class MyQuests extends React.Component {
     }
     componentDidMount() {
         this.props.dispatch(myQuests());
+        console.log("this.props.myQuests", this.props.myQuests);
     }
     render() {
         console.log("this.props.myQuests", this.props.myQuests);

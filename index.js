@@ -327,6 +327,30 @@ app.get("/getQuestImages/:id", (req, res) => {
             console.log("error in getting getQuestImages", error);
         });
 });
+//////
+
+app.get("/getImageInfo/:id", (req, res) => {
+    const id = req.params.id;
+    db.getImageInfo(id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.log("error in getting getImageInfo", error);
+        });
+});
+
+app.get("/getUploaderName/:id", (req, res) => {
+    console.log("!!req.params.id", req.params.id);
+    const id = req.params.id;
+    db.getUploaderName(id)
+        .then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.log("error in getting getImageInfo", error);
+        });
+});
 
 ///////
 

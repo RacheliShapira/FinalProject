@@ -135,6 +135,24 @@ module.exports.getQuestInfo = function(board_id) {
         [board_id]
     );
 };
+
+module.exports.getImageInfo = function(img_id) {
+    return db.query(
+        `SELECT *
+        FROM images
+        WHERE id = $1`,
+        [img_id]
+    );
+};
+
+module.exports.getUploaderName = function(uploader_id) {
+    return db.query(
+        `SELECT *
+        FROM users
+        WHERE id = $1`,
+        [uploader_id]
+    );
+};
 //
 // module.exports.getMyQuests = function(uploader_id) {
 //     return db.query(

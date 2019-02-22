@@ -408,3 +408,17 @@ input {
 #noQuest {
     text-align: center;
 }
+#imgContainer {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+#modal_img {
+    height: 500px;
+    weight: 500px;
+}
+#largeImg {
+    grid-column: 1;
+}
+#imgInfo {
+    grid-column: 2;
+}
