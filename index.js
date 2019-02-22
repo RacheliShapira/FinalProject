@@ -232,6 +232,16 @@ app.post("/removeFriendship/:id", (req, res) => {
         });
 });
 
+app.get("/friends/list", (req, res) => {
+    db.getFriendshipLists(req.session.userId)
+        .then(results => {
+            res.json(results);
+        })
+        .catch(err => {
+            console.log("error while getting friendshiplists: ", err);
+        });
+});
+
 ////////////////// friendship
 //////////////////////////
 
@@ -293,6 +303,18 @@ app.post(
     }
 );
 
+/////
+
+app.get("/getMyQuests", (req, res) => {
+    db.getMyQuests(req.session.userId)
+        .then(data => {
+            res.json(data);
+            // console.log("data", data);
+        })
+        .catch(error => {
+            console.log("error in getting getMyQuests", error);
+        });
+});
 ///////////////
 
 app.get("/getQuestImages/:id", (req, res) => {

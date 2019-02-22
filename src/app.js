@@ -7,6 +7,8 @@ import Nav from "./nav";
 import OtherUser from "./otherUser";
 import AddQuest from "./addQuest";
 import Quest from "./quest";
+import MyFriends from "./myFriends";
+import MyQuests from "./myQuests";
 
 import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
@@ -148,6 +150,8 @@ export default class App extends React.Component {
                                 />
                             )}
                         />
+                        <Route path="/myFriends" component={MyFriends} />
+                        <Route path="/myQuests" component={MyQuests} />
                     </div>
                 </BrowserRouter>
             </div>

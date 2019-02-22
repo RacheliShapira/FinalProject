@@ -18,9 +18,9 @@ export default class UploadImageQuest extends React.Component {
         var uploadedFile = file.files[0];
         var formData = new FormData();
         formData.append("boardId", this.state.boardId);
-        formData.append("description", this.state.description);
-        formData.append("location", this.state.location);
         formData.append("uploadedFile", uploadedFile);
+        formData.append("description", this.description);
+        formData.append("location", this.location);
 
         axios
             .post("/quest/upload", formData)
@@ -35,6 +35,7 @@ export default class UploadImageQuest extends React.Component {
 
     handleChange(e) {
         this[e.target.name] = e.target.value;
+        // console.log(" e.target.value;", e.target.value);
     }
     closeModal(e) {
         if (e.target == document.getElementById("uploader")) {
@@ -54,7 +55,7 @@ export default class UploadImageQuest extends React.Component {
     }
     render() {
         return (
-            <div onClick={this.closeModal} id="uploader">
+            <div onClick={this.closeModal} id="questImageUploader">
                 <div id="imageForm">
                     <h3 className="changePic">
                         Choose a picture for your Quest

@@ -19,7 +19,7 @@ export default function Profile(props) {
             <div id="bioEditorContainer">
                 <p id="status">{props.bio}</p>
                 <button className="bioButtons" onClick={props.showBioEditor}>
-                    Status
+                    Say something about yourself!
                 </button>
                 {props.bioEditorVisible && (
                     <BioEditor
@@ -28,10 +28,6 @@ export default function Profile(props) {
                         updateProfileBio={props.updateProfileBio}
                     />
                 )}
-            </div>
-            <div id="profileInfo">
-                <h3> Your Friends:</h3>
-                <h3> Your Quest boards:</h3>
             </div>
         </div>
     );

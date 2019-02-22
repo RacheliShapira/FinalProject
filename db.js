@@ -95,6 +95,27 @@ module.exports.removeFriendship = (loggedInId, otherUserId) => {
     );
 };
 
+module.exports.getFriendshipLists = id => {
+    return db.query(
+        `SELECT users.id, first, last, imageurl, accepted
+        FROM friendship
+        JOIN users
+        ON (accepted = false AND recipient_id = $1 AND sender_id = users.id)
+        OR (accepted = true AND recipient_id = $1 AND sender_id = users.id)
+        OR (accepted = true AND sender_id = $1 AND recipient_id = users.id)
+    `,
+        [id]
+    );
+};
+
+module.exports.getUsersByIds = function(arrayOfIds) {
+    return db.query(
+        `SELECT *
+         FROM users
+       WHERE users.id = ANY($1)`,
+        [arrayOfIds]
+    );
+};
 /////friendship
 
 module.exports.addQuest = function(board_name, board_img, description, type) {
@@ -112,6 +133,26 @@ module.exports.getQuestInfo = function(board_id) {
         FROM quests
         WHERE id = $1`,
         [board_id]
+    );
+};
+//
+// module.exports.getMyQuests = function(uploader_id) {
+//     return db.query(
+//         `SELECT quests.id, board_name, board_img, quests.description, type
+//         FROM quests
+//         LEFT JOIN images
+//         ON images.uploader_id = uploader_id
+//         ORDER BY quests.created_at DESC`,
+//         [uploader_id]
+//     );
+// };
+
+module.exports.getMyQuests = function(uploader_id) {
+    return db.query(
+        `SELECT board_id
+        FROM images
+        WHERE id = $1`,
+        [uploader_id]
     );
 };
 

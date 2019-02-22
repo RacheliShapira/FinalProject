@@ -5,7 +5,7 @@ export default class addQuest extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            board_img: "/defaultBoard.jpg",
+            board_img: "/defaultBoard.png",
             fromSubmitted: false
             // board_id: ""
         };
@@ -48,14 +48,14 @@ export default class addQuest extends React.Component {
                         your friends!
                     </h2>
                 </div>
+
+                <img id="boardPic" src={this.state.board_img} />
                 <div id="boardForm">
                     {this.state.error && (
                         <div className="error">Ooops! something is wrong</div>
                     )}
                     <p>Quest title: </p>
                     <input name="board_name" onChange={this.handleChange} />
-                    <p>Quest photo: </p>
-                    <img id="boardPic" src={this.state.board_img} />
                     <p>description: </p>
                     <input name="description" onChange={this.handleChange} />
 
